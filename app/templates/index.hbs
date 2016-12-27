@@ -1,0 +1,26 @@
+<div class="jumbotron text-center">
+  <h1>Coming Soon Yo!!!!</h1>
+
+  <br/><br/>
+
+  <p>Do NOT miss our launch date! Request an invitation now, aight?</p>
+
+  <div class="form-horizontal form-group form-group-lg row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+      {{input type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+        <button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled}} {{action 'saveInvitation'}} >
+          Invita-ti-on Yo!
+        </button>
+    </div>
+  </div>
+  <div class="{{if responseMessage "alert alert-success"}}">
+    {{#if responseMessage}}
+      {{responseMessage}}
+    {{else}}
+      <br/><br/><br/><br/>
+    {{/if}}
+  </div>
+  <br/><br/>
+</div>
