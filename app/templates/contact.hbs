@@ -1,18 +1,57 @@
-<h1>Contact page, aight?!?!</h1>
-<div class="form-horizontal form-group form-group-lg row">
-  <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-    {{input type="email" value=emailAddress class="form-control" placeholder="Please type your damn e-mail address." autofocus="autofocus"}}
-    {{textarea class="form-control" placeholder="Message here dammit. (At least 5 characters, mmkay?)" rows="7" value=message}}
-    <button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled}} {{action 'saveContact'}} >
-      Get at me
-    </button>
-  </div>
+<h1>Contact page, y'heard?!?!</h1>
+
+<p class="well well-sm">If you have any dumb questions or stupid feedback, please leave me a message with your email address.</p>
+
+<div class="row">
+    <div class="col-md-6">
+
+      {{#if responseMessage}}
+
+        <br/>
+        <div class="alert alert-success">
+            <h4>Thank you! Your message is sent.</h4>
+            <p>To: {{model.email}}</p>
+            <p>Message: {{model.message}}</p>
+            <p>Reference ID: {{model.id}}</p>
+        </div>
+
+      {{else}}
+
+        <div class="form-group has-feedback {{if model.isValidEmail 'has-success'}}">
+            <label>Your freakin' email address *</label>
+          {{input type="email" class="form-control" placeholder="Your email address" value=model.email autofocus="autofocus"}}
+          {{#if model.isValidEmail}}<span class="glyphicon glyphicon-ok form-control-feedback"></span>{{/if}}
+        </div>
+        <div class="form-group has-feedback {{if model.isMessageEnoughLong 'has-success'}}">
+            <label>Your damn message *</label>
+          {{textarea class="form-control" placeholder="Your message. (At least 5 characters.)" rows="5" value=model.message}}
+          {{#if model.isMessageEnoughLong}}<span class="glyphicon glyphicon-ok form-control-feedback"></span>{{/if}}
+        </div>
+        <button class="btn btn-success" {{action 'saveContact' model}} disabled={{model.isNotValid}}>Send, and I'll get back to you...oh I'll get back to you alright</button>
+
+      {{/if}}
+
+    </div>
 </div>
-<div class="{{if responseMessage "alert alert-success"}}">
+
+<!-- <h1></h1>
+<div class="form-group has-feedback {{if model.isValidEmail 'has-success'}}">
+     <label>Your email address*:</label>
+   {{input type="email" class="form-control" placeholder="Your email address" value=model.email autofocus="autofocus"}}
+   {{#if model.isValidEmail}}<span class="glyphicon glyphicon-ok form-control-feedback"></span>{{/if}}
+ </div>
+ <div class="form-group has-feedback {{if model.isMessageEnoughLong 'has-success'}}">
+     <label>Your message*:</label>
+   {{textarea class="form-control" placeholder="Your message. (At least 5 characters.)" rows="5" value=model.message}}
+   {{#if model.isMessageEnoughLong}}<span class="glyphicon glyphicon-ok form-control-feedback"></span>{{/if}}
+ </div>
+ <button class="btn btn-success" {{action 'saveContact' model}} disabled={{model.isNotValid}}>Send</button>
+
+ <div class="{{if responseMessage "alert alert-success"}}">
   {{#if responseMessage}}
-  {{responseMessage}}
+  Thanks my man.  We just saved dis shit!
   {{else}}
   <br/><br/><br/><br/>
   {{/if}}
 
-</div>
+</div> -->
