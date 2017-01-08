@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import 'bootstrap';
 
 body {
   padding-top: 20px;
@@ -12,7 +12,15 @@ html {
   min-height: 150px;
 }
 
-.btn {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
+.label-fade {
+  margin: 10px;
+  opacity: 0;
+  @include transition(all 0.5s);
+  &.label-show {
+    opacity: 1;
+  }
+}
+
+.extra-padding-bottom {
+  padding-bottom: 20px;
 }

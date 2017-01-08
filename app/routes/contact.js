@@ -23,28 +23,3 @@ export default Ember.Route.extend({
   }
 
 });
-
-// old controller
-// import Ember from 'ember';
-//
-// export default Ember.Controller.extend({
-//   emailAddress: '',
-//   message: '',
-//   actions: {
-//     saveContact() {
-//       const email = this.get('emailAddress')
-//       const message = this.get('message')
-//
-//       const newContact = this.store.createRecord('contact', {
-//         email: email,
-//         message: message,
-//       })
-//
-//       newContact.save().then((response) => {
-//         this.set('responseMessage',`Thanks my man.  We just saved dis shit: ${this.get('message')} with id ${response.get('id')}`);
-//         this.set('emailAddress','');
-//         this.set('message','');
-//       })
-//     }
-//   }
-// })

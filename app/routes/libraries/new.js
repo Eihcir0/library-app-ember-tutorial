@@ -2,25 +2,33 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model() {
-    return this.store.createRecord('library')
+  model: function () {
+    return this.store.createRecord('library');
+  },
+
+  setupController: function (controller, model) {
+    this._super(controller, model);
+
+    controller.set('title', 'Create a new library');
+    controller.set('buttonLabel', 'Create');
+  },
+
+  renderTemplate() {
+    this.render('libraries/form');
   },
 
   actions: {
 
     saveLibrary(newLibrary) {
-      newLibrary.save().then(() => this.transitionTo('libraries'))
+      newLibrary.save().then(() => this.transitionTo('libraries'));
     },
 
     willTransition() {
-      const model = this.controller.get('model')
+      let model = this.controller.get('model');
 
       if (model.get('isNew')) {
-        model.destroyRecord()
+        model.destroyRecord();
       }
-
-      this.controller.set('responseMessage', false);
-
     }
   }
 });
