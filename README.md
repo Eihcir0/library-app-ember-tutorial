@@ -1,7 +1,6 @@
-# library-app
+# library-app-ember-tutorial
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A library app created in Ember based [Zoltan's](https://github.com/zoltan-nz) [YoEmber tutorial](http://yoember.com/).
 
 ## Prerequisites
 
