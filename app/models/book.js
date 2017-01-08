@@ -1,14 +1,16 @@
 // app/models/book.js
 import DS from 'ember-data';
 import Faker from 'faker';
-
+import moment from 'moment'
 export default DS.Model.extend({
 
   title: DS.attr('string'),
   releaseYear: DS.attr('date'),
-
+  formattedYear: moment(this.releaseYear).format('YYYY'),
   author: DS.belongsTo('author', {inverse: 'books', async: true}),
   library: DS.belongsTo('library', {inverse: 'books', async: true}),
+
+  isNotValid: Ember.computed.empty('title'),
 
   randomize(author, library) {
     this.set('title', this._bookTitle());
